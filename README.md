@@ -1,4 +1,6 @@
-In the JS game, all things would be slow
+In the JS game, what all things that would be slow
+
+I have written alot, in this repo, how it make sense if i try to visit this branch in future and learn from this
 
 1. creating js objects
 2. network -> but here we are trying to improve javascript, we gonna pretend network is unimprovable, we not gonna worry 
