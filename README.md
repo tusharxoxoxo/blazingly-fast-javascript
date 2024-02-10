@@ -149,18 +149,18 @@ and packed in a single location but in the case of the set who knows where it al
 
 let's try to prove our intuition, sets, and maps are slower than arrays
 there is a breakpoint where we should use a set after which sets start to perform better than arrays, always check 
-array memory is closed together, lookup are really easy, it just run through that memeory really fast 
+array memory is closed together, lookup is really easy, it just runs through that memory really fast 
 
-the different between slice and splice
-splice -> splice take things about 
+the difference between slice and splice
+splice -> Splice take things about 
 slice -> creates a view into 
-it's even in the name, u can kind of guess it 
+it's even in the name, u can guess it 
 
 it's an advent of code strategy, stop using set and start using array
 
 #brief intro to v8 garbage collector
-these are going to be v8 specific features, they are not jsc's specific features that means if u do this with bun u are going to have slighltly different results 
-may be bun also have a similiar styled garbage collector, but we cannot say it with confirmation 
+these are going to be v8-specific features, they are not JSC's specific features which means if you do this with bun you are going to have slightly different results 
+may be bun also has a similar styled garbage collector, but we cannot say it with confirmation 
 
 following example code 
 
@@ -169,4 +169,5 @@ let a = {};// a is an object
 const b = [a];// b is an array with a in it 
 const c = { ref: a };// c has a ref to a
 ```
+![Screenshot 2024-02-10 at 7 28 05 PM 1](https://github.com/tusharxoxoxo/blazingly-fast-javascript/assets/79051850/edac3b0f-bef4-4993-9ef7-55c5bda59ea5)
 
