@@ -29,7 +29,6 @@ function createState(x: number, direction: 1 | -1) {
         direction,
         id: ++id,
         ticks: 0,
-        bullets: new Set<Bullet>(),
     };
 }
 
@@ -49,10 +48,9 @@ export class Game {
     private s1: PlayerState;
     private s2: PlayerState;
 
-    public bullets: Bullet[];
-
     private logger: Logger;
     public loopCount: number = 0;
+    public bullets: Bullet[];
 
     private currentTime: number = 0;
 
@@ -76,7 +74,8 @@ s2: ${JSON.stringify(this.s2)}`);
 
         this.loopCount++;
         this.currentTime += delta;
-        for (let i = 0; i < this.bullets.length; i++) {
+
+        for (let i = 0; i < this.bullets.length; ++i) {
             const b = this.bullets[i];
             updateBullet(b, delta);
             if (b.x < this.s1.x + consts.PLAYER_RADIUS) {
@@ -85,7 +84,6 @@ s2: ${JSON.stringify(this.s2)}`);
                 this.s1.won = false;
                 this.ended = true;
                 return;
-
             }
             if (b.x > this.s2.x - consts.PLAYER_RADIUS) {
                 this.logger.info({ s1: this.s1, s2: this.s2, loopCount: this.loopCount }, "player two lost");
@@ -95,30 +93,19 @@ s2: ${JSON.stringify(this.s2)}`);
                 return;
             }
 
-        }
-
-
-        // test for bullet collisions
-        const bulletsRemoved = [];
-        for (const b of this.s1.bullets) {
-            updateBullet(b, delta);
-           for (const b2 of this.s2.bullets) {
+            for (let j = i + 1; j < this.bullets.length; ++j)  {
+                const b2 = this.bullets[j];
                 if (collide(b, b2)) {
                     this.logger.info({
                         b,
                         other: b2,
                     }, "bullets collided");
-                    bulletsRemoved.push(b);
-                    bulletsRemoved.push(b2);
+                    this.bullets.splice(j, 1);
+                    this.bullets.splice(i--, 1);
                     break;
                 }
             }
         }
-
-        bulletsRemoved.forEach(b => {
-            this.s1.bullets.delete(b);
-            this.s2.bullets.delete(b);
-        });
     }
 
     fire(player: number) {
@@ -138,7 +125,7 @@ s2: ${JSON.stringify(this.s2)}`);
     }
 
     private createBullet(state: PlayerState) {
-        state.bullets.add({
+        this.bullets.push({
             x: state.x + (consts.PLAYER_RADIUS + consts.BULLET_RADIUS) * state.direction,
             direction: state.direction,
             id: ++id,

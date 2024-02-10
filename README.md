@@ -149,8 +149,11 @@ and packed in a single location but in the case of the set who knows where it al
 
 let's try to prove our intuition, sets, and maps are slower than arrays
 there is a breakpoint where we should use a set after which sets start to perform better than arrays, always check 
+array memory is closed together, lookup are really easy, it just run through that memeory really fast 
 
 the different between slice and splice
 splice -> splice take things about 
 slice -> creates a view into 
 it's even in the name, u can kind of guess it 
+
+it's an advent of code strategy, stop using set and start using array
