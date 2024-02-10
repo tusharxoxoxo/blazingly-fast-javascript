@@ -157,3 +157,16 @@ slice -> creates a view into
 it's even in the name, u can kind of guess it 
 
 it's an advent of code strategy, stop using set and start using array
+
+#brief intro to v8 garbage collector
+these are going to be v8 specific features, they are not jsc's specific features that means if u do this with bun u are going to have slighltly different results 
+may be bun also have a similiar styled garbage collector, but we cannot say it with confirmation 
+
+following example code 
+
+```JavaScript
+let a = {};// a is an object
+const b = [a];// b is an array with a in it 
+const c = { ref: a };// c has a ref to a
+```
+
