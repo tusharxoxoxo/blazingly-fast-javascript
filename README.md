@@ -171,10 +171,10 @@ const c = { ref: a };// c has a ref to a
 ```
 ![Screenshot 2024-02-10 at 7 28 05 PM 1](https://github.com/tusharxoxoxo/blazingly-fast-javascript/assets/79051850/edac3b0f-bef4-4993-9ef7-55c5bda59ea5)
 what's happening underneath the hood is 
--> there exist this object a and maybe the bookkeeping is attached in some sort of wrapper class to a, maybe it's allocated behind a and how they do their memory stuff 
--> we don't know exacltly how they do it 
+-> There exist this object a and maybe the bookkeeping is attached in some sort of wrapper class to a, maybe it's allocated behind a and how they do their memory stuff 
+-> We don't know exactly how they do it 
 -> but in some sense there is some amount of bookkeeping to be able to make sure that when a is created, they know a has a reference to it, or someone's pointing to it when they walk through the graph 
--> it has some sort of determined location somewhere in the memory, in the nursery really when it begins with, and so they are all pointing to it 
+-> It has some sort of determined location somewhere in the memory, in the nursery really when it begins with, and so they are all pointing to it 
 
 but what happens when we do this 
 ```JavaScript 
@@ -186,12 +186,13 @@ delete c.ref;
 our original object, 0xdeadbeef, has been completely abandoned 
 nothing is pointing to it 
 
-there are two types of garbage collection (gc)
+there are two types of garbage collection (GC)
 1. Major: Walks all the objects from the root checking what to be removed (typically slow)
 2. Minor: walk all the "new" objects from the special roots checking for what to be removed (typically fast) 
 
 Major
--> Marking and sweeping - in javascript there are "root" objects
-example -> suppose we have a small html, in which we have some javascript, we have two objects, a and b, those are actually attached 
-attached to window object, if u raw dog a script in html, whatever variable you create actually get attached to the window object 
+-> Marking and sweeping - in javascript, there are "root" objects
+example -> suppose we have a small HTML, in which we have some javascript, we have two objects, a and b, those are attached 
+to the window object, if u raw dog a script in HTML, whatever variable you create gets attached to the window object 
 So we have a and b on the window and we set b to undefined 
+![image](https://github.com/tusharxoxoxo/blazingly-fast-javascript/assets/79051850/f0397742-03c2-4f22-9767-acc0fbee3117)
