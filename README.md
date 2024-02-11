@@ -1,6 +1,6 @@
-In the JS game, what all things that would be slow
+In the JS game, what are all the things that would be slow
 
-I have written alot, in this repo, how it make sense if i try to visit this branch in future and learn from this
+I have written a lot, in this repo, about how it makes sense if I try to visit this branch in the future and learn from this
 
 1. creating js objects
 2. network -> but here we are trying to improve javascript, we gonna pretend network is unimprovable, we not gonna worry 
@@ -152,7 +152,7 @@ there is a breakpoint where we should use a set after which sets start to perfor
 array memory is closed together, lookup is really easy, it just runs through that memory really fast 
 
 the difference between slice and splice
-splice -> Splice take things about 
+splice -> Splice takes things about 
 slice -> creates a view into 
 it's even in the name, u can guess it 
 
@@ -171,7 +171,7 @@ const c = { ref: a };// c has a ref to a
 ```
 ![Screenshot 2024-02-10 at 7 28 05 PM 1](https://github.com/tusharxoxoxo/blazingly-fast-javascript/assets/79051850/edac3b0f-bef4-4993-9ef7-55c5bda59ea5)
 what's happening underneath the hood is 
--> There exist this object a and maybe the bookkeeping is attached in some sort of wrapper class to a, maybe it's allocated behind a and how they do their memory stuff 
+-> There exists this object a and maybe the bookkeeping is attached in some sort of wrapper class to a, maybe it's allocated behind a and how they do their memory stuff 
 -> We don't know exactly how they do it 
 -> but in some sense there is some amount of bookkeeping to be able to make sure that when a is created, they know a has a reference to it, or someone's pointing to it when they walk through the graph 
 -> It has some sort of determined location somewhere in the memory, in the nursery really when it begins with, and so they are all pointing to it 
